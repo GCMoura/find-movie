@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body{
+  background: #000;
+  height: 100vh;
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container {
+  margin-top: 30px;
+  display:flex;
+}
+.container #input{
+  height: 35px;
+  text-align: center;
+  font-size: 24px;
+  outline: none;
+}
+.container #button{
+  height: 42px;
+  width: 150px;
+  margin-left: 10px;
+  font-size: 24px;
+  background: yellow;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.coverDiv {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.cover{
+  height: 250px;
+  width: 180px;
+  margin: 2px;
+}
+.imgCover{
+  height: 250px;
+  width: 180px;
+  cursor: pointer;
+}
