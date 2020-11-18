@@ -42,7 +42,7 @@ This application uses APIs available in [OMDb-API](http://www.omdbapi.com/)
 Clone this repository to your local machine using https://github.com/GCMoura/find-movie.git
 
 ## Deploy
-This application was deployed using [Github Pages](https://pages.github.com/).
+This application was deployed using [Github Pages](https://pages.github.com/)
 
 ## Contributing
 If you would like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
