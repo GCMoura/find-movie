@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@700&display=swap');
 * {
   margin: 0;
   padding: 0;
 }
-body{
+.body{
   background: #000;
   height: 100vh;
   width: 100%;
@@ -13,6 +14,9 @@ body{
 .container {
   margin-top: 30px;
   display:flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .container #input{
   height: 35px;
@@ -29,18 +33,95 @@ body{
   border-radius: 8px;
   cursor: pointer;
 }
+.container .logo span{
+  font-family: 'Mukta', sans-serif;
+  font-size: 30px;
+  color: #fff;
+  margin-left: 20px;  
+}
+.container .logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
 .coverDiv {
   width: 100%;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
+  margin: 0px 10px;
 }
 .cover{
-  height: 250px;
-  width: 180px;
-  margin: 2px;
+  height: 400px;
+  width: 280px;
+  margin: 20px;
 }
 .imgCover{
-  height: 250px;
-  width: 180px;
+  height: 400px;
+  width: 280px;
   cursor: pointer;
+}
+.load-button{
+  display: none;
+}
+.load-button button {
+  width: 450px;
+  height: 40px;
+  background: rgb(44, 139, 44);
+  color: #ddd;
+  font-size: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.movie-highlight{
+  width: 400px;
+  position: absolute;
+  background: #ddd;
+  border-radius: 10px;
+  z-index: 5000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 1;
+  font-size: 20px;
+  padding: 0px 30px;
+}
+.movie-highlight-hidden{
+  display: none;
+}
+.movie-highlight-cover{
+  margin-top: 5px;
+  height: 400px;
+  width: 280px;
+}
+.close-button{
+  cursor: pointer;
+  text-align: center;
+  border: solid 1px black;
+  border-radius: 8px;
+  margin: 10px 0px;
+  background-color: rgb(170, 14, 14);
+  font-size: 22px;
+  color: #fff;
+  height: 40px;
+  width: 90px;
+}
+.close-button:hover{
+  background-color: #111;
+}
+@media(max-width:700px){
+  .container #input{
+    margin-left: 5px;
+    width: 180px;
+  }
+  .container #button{
+    width: 120px;
+    margin-right: 5px;
+  }
+  .movie-highlight{
+    width: 300px;
+  }
 }
