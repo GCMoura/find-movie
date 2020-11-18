@@ -14,7 +14,8 @@ Using an API for find data about a movie.
   - [License](#license)
 
 ## Screenshots (mobile and desktop layout)
-![Screenshot-1](https://raw.githubusercontent.com/GCMoura/find-movie/master/screenshots/screenshot-1.png)
+![Screenshot-1](https://github.com/GCMoura/find-movie/blob/main/screenshots/screenshot-1.png)
+![Screenshot-2](https://github.com/GCMoura/find-movie/blob/main/screenshots/screenshot-2.png)
 
 ## Getting Started
 This page was created using only Vanilla Javascript, without frameworks or libraries, therefore for visualizing this page access:
