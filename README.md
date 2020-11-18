@@ -20,6 +20,7 @@ Using an API for find data about a movie.
 ## Getting Started
 This page was created using only Vanilla Javascript, without frameworks or libraries, therefore for visualizing this page access:
 
+[Find Movie](https://gcmoura.github.io/find-movie/)
 
 ## How it works
 Search for the keyword in input section. After press Search button, the application connect with API from OMDb (The Open Movie Database), which return all the movies with keyword. If click in the movie poster a new conncetion with API is done and the data of the movie is show.
