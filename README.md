@@ -23,7 +23,7 @@ This page was created using only Vanilla Javascript, without frameworks or libra
 [Find Movie](https://gcmoura.github.io/find-movie/)
 
 ## How it works
-Search for the keyword in input section. After press Search button, the application connect with API from OMDb (The Open Movie Database), which return all the movies with keyword. If click in the movie poster a new conncetion with API is done and the data of the movie is show.
+Search for the keyword in input section. After press Search button, the application connect with API from OMDb (The Open Movie Database), which return all the movies with keyword. If click in the movie poster a new connection with API is done and the data of the movie is show.
 
 ## API
 This application uses APIs available in [OMDb-API](http://www.omdbapi.com/)
