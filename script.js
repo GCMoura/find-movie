@@ -25,7 +25,7 @@ async function getMovieBySearch() {
   
   search = input.value
 
-  const url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}&type=movie&page=${page}`
+  const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${search}&type=movie&page=${page}`
 
   const res = await fetch(url)
 
@@ -48,7 +48,7 @@ function showMovie(movie){
 
 async function movieData(movieTitle){
   
-  const url = `http://www.omdbapi.com/?apikey=${apiKey}&t=${movieTitle}&type=movie`
+  const url = `https://www.omdbapi.com/?apikey=${apiKey}&t=${movieTitle}&type=movie`
   
   const res = await fetch(url)
 
@@ -107,21 +107,12 @@ function createPosterMovies(){ //cria as imagens com os posters dos filmes
 
   posterMovies = document.querySelectorAll('.imgCover')
 
-  // posterMovies.forEach(poster => {
-  //   poster.addEventListener('click', function(){highlightMovie(poster.id, poster.classList[1])})
-  // })
-
-  // if(posterMovies.length % 10 === 0 || posterMovies.length < 10){    
-  //   posterMovies.forEach(poster => {
-  //     poster.addEventListener('click', function(){highlightMovie(poster.id, poster.classList[1])})
-  //   })
-  // }
   posterMovies.length % 10 == 0 ? loadButton.style.display = 'block' : loadButton.style.display = 'none'
 }
 
 async function highlightMovie(movieID, position){
   console.log('Filme selecionado: ', movieID)
-  const url = `http://www.omdbapi.com/?apikey=${apiKey}&i=${movieID}&type=movie`
+  const url = `https://www.omdbapi.com/?apikey=${apiKey}&i=${movieID}&type=movie`
   
   const res = await fetch(url)
 
