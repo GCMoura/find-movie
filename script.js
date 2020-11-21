@@ -1,4 +1,3 @@
-import API_KEY from './api_key.js'
 var body = document.querySelector('.body')
 var container = document.querySelector('.container')
 var input = document.querySelector('#input')
@@ -7,7 +6,7 @@ var coverDiv = document.querySelector('.coverDiv')
 var loadButton = document.querySelector('.load-button')
 var posterMovies
 
-const apiKey = API_KEY
+const apiKey = "881f52d8"
 var search
 var movie
 var idUnique = []
