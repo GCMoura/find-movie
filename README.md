@@ -20,7 +20,7 @@ Using an API for find data about a movie.
 ## Getting Started
 This page was created using only Vanilla Javascript, without frameworks or libraries, therefore for visualizing this page access:
 
-[Find Movie](https://gcmoura.github.io/find-movie/)
+[Seek Movie](https://gcmoura.github.io/seek-movie/)
 
 ## How it works
 Search for the keyword in input section. After press Search button, the application connect with API from OMDb (The Open Movie Database), which return all the movies with keyword. If click in the movie poster a new connection with API is done and the data of the movie is show.
@@ -39,10 +39,10 @@ This application uses APIs available in [OMDb-API](http://www.omdbapi.com/)
   ```
 
 ## Clone
-Clone this repository to your local machine using https://github.com/GCMoura/find-movie.git
+Clone this repository to your local machine using https://github.com/GCMoura/seek-movie.git
 
 ## Deploy
-This application was deployed using [Github Pages](https://pages.github.com/)
+The backend was deployed using [Heroku](https://www.heroku.com/). And the frontend was deployed using [Github Pages](https://pages.github.com/)
 
 ## Contributing
 If you would like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
