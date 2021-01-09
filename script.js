@@ -1,6 +1,6 @@
 const BASE_URL = window.location.hostname.includes('localhost')
 ? 'http://localhost:5000'
-: 'https://seek-movie.herokuapp.com/'
+: 'https://seek-movie.herokuapp.com'
 
 var body = document.querySelector('.body')
 var container = document.querySelector('.container')
