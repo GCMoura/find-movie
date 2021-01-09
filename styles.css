@@ -112,6 +112,13 @@
 .close-button:hover{
   background-color: #111;
 }
+.alert{
+  text-align: center;
+  color: #111;
+  padding: 5px;
+  font-size: 22px;
+  margin-top: 15px;
+}
 @media(max-width:700px){
   .container #input{
     margin-left: 5px;
@@ -124,4 +131,9 @@
   .movie-highlight{
     width: 300px;
   }
+  .alert{
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 18px;
+}
 }

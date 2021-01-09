@@ -1,3 +1,8 @@
+const BASE_URL = window.location.hostname.includes('localhost')
+? 'http://localhost:5000'
+: 'http://localhost:5000'
+//: 'https://app-openweather.herokuapp.com'
+
 var body = document.querySelector('.body')
 var container = document.querySelector('.container')
 var input = document.querySelector('#input')
@@ -6,9 +11,7 @@ var coverDiv = document.querySelector('.coverDiv')
 var loadButton = document.querySelector('.load-button')
 var posterMovies
 
-const apiKey = "881f52d8"
 var search
-var movie
 var idUnique = []
 var page = 1
 
@@ -22,20 +25,30 @@ input.addEventListener('focus', () => {
 })
 
 async function getMovieBySearch() {
-  
+
   search = input.value
+  var response
 
-  const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${search}&type=movie&page=${page}`
-
-  const res = await fetch(url)
-
-  console.log('First request: ', res.status)
-
-  movie = await res.json()
-
-  showMovie(movie)
-  page++
-  loadButton.addEventListener('click', getMovieBySearch) //mostra os próximos 10 filmes
+  fetch(`${BASE_URL}/${search}/${page}`, {
+      method: 'GET',
+      params: {
+          search,
+          page
+      }
+    })
+    .then(async (serverResponse) => {
+      if (serverResponse) {
+          response = await serverResponse.json();
+          if(response.Response === "False"){
+            var message = "Não há filmes com o termo pesquisado"
+            showAlert(message, 'danger')
+          } else {
+            showMovie(response)
+            page++
+            loadButton.addEventListener('click', getMovieBySearch) //mostra os próximos 10 filmes
+          }
+        } 
+      });
 }
 
 function showMovie(movie){
@@ -46,25 +59,27 @@ function showMovie(movie){
   }  
 }
 
-async function movieData(movieTitle){
-  
-  const url = `https://www.omdbapi.com/?apikey=${apiKey}&t=${movieTitle}&type=movie`
-  
-  const res = await fetch(url)
+async function movieData(title){
 
-  console.log('Second request: ', res.status)
-  
-  movie = await res.json()
+  var response
 
-  idUnique.push(movie.imdbID)
-
-  var runtimeHandled = handleMovieRuntime(movie.Runtime) //verifica filmes com mais de 70 minutos
-
-  var duplicateHandled = handleMovieDuplicated(movie.imdbID) //verifica filmes duplicados através do id
-    
-  if(runtimeHandled && duplicateHandled){
-    createPosterMovies()
-  }
+  fetch(`${BASE_URL}/${title}`, {
+    method: 'GET',
+    params: {
+      title
+    }
+  })
+  .then(async (serverResponse) => {
+    if (serverResponse) {
+        response = await serverResponse.json();
+        idUnique.push(response.imdbID)      
+        var runtimeHandled = handleMovieRuntime(response.Runtime) //verifica filmes com mais de 70 minutos
+        var duplicateHandled = handleMovieDuplicated(response.imdbID) //verifica filmes duplicados através do id
+        if(runtimeHandled && duplicateHandled){
+          createPosterMovies(response)
+        }
+    } 
+  });
 }
 
 function handleMovieRuntime(runtime){ //filmes com mais de 70 minutos
@@ -89,7 +104,7 @@ function handleMovieDuplicated(id){ //verifica duplicidade de filmes
   }
 }
 
-function createPosterMovies(){ //cria as imagens com os posters dos filmes
+function createPosterMovies(movie){ //cria as imagens com os posters dos filmes
   var cover = document.createElement('div')
   cover.classList.add('cover')
 
@@ -111,18 +126,23 @@ function createPosterMovies(){ //cria as imagens com os posters dos filmes
 }
 
 async function highlightMovie(movieID, position){
-  console.log('Filme selecionado: ', movieID)
-  const url = `https://www.omdbapi.com/?apikey=${apiKey}&i=${movieID}&type=movie`
   
-  const res = await fetch(url)
+  var response
+  var flag = true
 
-  console.log('Third request: ', res.status)
-  
-  movie = await res.json()
-
-  coverDiv.style.opacity = 0.1
-
-  createMovieHighlightData(movie, position)
+  fetch(`${BASE_URL}/${movieID}/${position}/${flag}`, {
+    method: 'GET',
+    params: {
+      movieID
+    }
+  })
+  .then(async (serverResponse) => {
+    if (serverResponse) {
+        response = await serverResponse.json();
+        coverDiv.style.opacity = 0.1
+        createMovieHighlightData(response, position)
+      } 
+    });
 }
 
 function createMovieHighlightData(movie, position){
@@ -159,4 +179,23 @@ function createMovieHighlightData(movie, position){
     movieHighlight.style.display = 'none'
     coverDiv.style.opacity = 1
   })
+}
+
+function showAlert(message, classType) {
+  const div = document.createElement('div')
+
+  div.className = `alert alert-${classType}`
+  
+  div.appendChild(document.createTextNode(message))
+
+  body.appendChild(div)
+
+  setTimeout(() => {
+      document.querySelector('.alert').remove()
+      coverDiv.innerHTML = ""
+      input.value = ""
+      loadButton.style.display = 'none'
+      page = 1
+  }, 3000);    
+
 }
